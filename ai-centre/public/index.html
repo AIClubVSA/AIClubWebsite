@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Centre at Vidyashilp Academy is a student-friendly AI club built to help beginners learn, build, and grow." />
+  <title>AI Centre | Vidyashilp Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="AI Centre home">
+        <span class="brand-mark" aria-hidden="true">AI</span>
+        <span class="brand-text">
+          <strong>AI Centre</strong>
+          <span>Vidyashilp Academy</span>
+        </span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="#why">Why Join</a>
+        <a href="#experience">What You&apos;ll Do</a>
+        <a href="#sessions">Sessions</a>
+        <a href="#tools">Tools</a>
+        <a href="#faq">FAQ</a>
+        <a href="#join">Join</a>
+
+        <div class="nav-auth" id="nav-auth">
+          <!-- Logged-out controls -->
+          <div class="auth-guest" id="auth-guest">
+            <button class="button button--ghost" type="button" data-auth-open="login">Log in</button>
+            <button class="button button--primary button--sm" type="button" data-auth-open="signup">Sign up</button>
+          </div>
+          <!-- Logged-in controls -->
+          <div class="auth-user" id="auth-user" hidden>
+            <span class="auth-greeting">Hi, <strong id="auth-user-name">there</strong></span>
+            <a class="button button--secondary button--sm" href="dashboard.html">Dashboard</a>
+            <button class="button button--ghost" type="button" id="auth-logout">Log out</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero section-reveal">
+      <div class="hero-background" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Vidyashilp Academy student club</p>
+          <h1>Join the AI Centre and turn your curiosity into something real.</h1>
+          <p class="lede">
+            If you have ever used ChatGPT, wanted to build something useful, or just wondered how AI is changing the
+            world, this club gives you the space, support, and tools to start.
+          </p>
+          <div class="hero-actions">
+            <button class="button button--primary" type="button" data-auth-open="signup">See why students join</button>
+            <a class="button button--secondary" href="#faq">Check how it works</a>
+          </div>
+
+          <dl class="hero-stats" aria-label="Key club highlights">
+            <div class="stat-card">
+              <dt>Beginner friendly</dt>
+              <dd><span class="counter" data-target="100">0</span>%</dd>
+            </div>
+            <div class="stat-card">
+              <dt>Hands-on tracks</dt>
+              <dd><span class="counter" data-target="4">0</span></dd>
+            </div>
+            <div class="stat-card">
+              <dt>Open to all</dt>
+              <dd><span class="counter" data-target="1">0</span> club</dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside class="hero-panel" aria-label="Join preview">
+          <div class="panel-card panel-card--accent reveal-item">
+            <span class="panel-label">What you get</span>
+            <ul class="check-list">
+              <li>Real AI builds you can present with confidence</li>
+              <li>A friendly space for beginners and experienced students</li>
+              <li>Workshops, demos, competitions, and creative challenges</li>
+              <li>Support from teachers and older members when you get stuck</li>
+            </ul>
+          </div>
+          <div class="panel-card reveal-item">
+            <h2 class="section-title section-title--small">Why it feels different</h2>
+            <p>
+              Instead of just talking about AI, you&apos;ll actually use it, test it, build with it, and learn how to
+              make it useful, creative, and responsible.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="why" class="section section-reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Why join</p>
+          <h2>Because this is more than a club. It&apos;s a place to get better at making things.</h2>
+          <p>
+            Students join when they want to learn skills that feel useful, creative, and future-ready without the
+            pressure of already being an expert.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal-item">
+            <h3>Make real builds</h3>
+            <p>Build chatbots, visuals, smart tools, and mini apps that are worth showing to friends, teachers, and future colleges.</p>
+          </article>
+          <article class="feature-card reveal-item">
+            <h3>Start from zero</h3>
+            <p>No special background required. If you are curious, you already belong here.</p>
+          </article>
+          <article class="feature-card reveal-item">
+            <h3>Meet your people</h3>
+            <p>Work with students who like tech, design, debate, coding, writing, or just trying something new.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section section--alt section-reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">What you&apos;ll do</p>
+          <h2>A club that mixes learning, building, and showing your work.</h2>
+          <p>Choose a path below and see how the club fits different interests, whether you&apos;re a beginner, a builder, or a creative thinker.</p>
+        </div>
+
+        <div class="path-switcher" role="tablist" aria-label="Member paths">
+          <button class="path-button is-active" type="button" data-path="beginner" role="tab" aria-selected="true">I&apos;m new to AI</button>
+          <button class="path-button" type="button" data-path="builder" role="tab" aria-selected="false">I like coding</button>
+          <button class="path-button" type="button" data-path="creator" role="tab" aria-selected="false">I like design</button>
+          <button class="path-button" type="button" data-path="leader" role="tab" aria-selected="false">I want to lead</button>
+        </div>
+
+        <div class="experience-panel">
+          <div class="experience-panel__copy reveal-item">
+            <p class="eyebrow" id="path-label">Beginner path</p>
+            <h3 id="path-title">Learn the basics without feeling behind.</h3>
+            <p id="path-text">You&apos;ll get plain-English explanations, low-pressure demos, and guided practice so AI stops feeling intimidating and starts feeling usable.</p>
+          </div>
+          <div id="path-grid" class="content-grid content-grid--three"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sessions" class="section section-reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Weekly rhythm</p>
+          <h2>The kind of sessions that make you want to come back.</h2>
+          <p>Every meeting should feel productive, social, and a little exciting, not like another worksheet.</p>
+        </div>
+        <div id="sessions-grid" class="content-grid content-grid--three"></div>
+      </div>
+    </section>
+
+    <section id="tools" class="section section--alt section-reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Tools</p>
+          <h2>Free tools, real possibilities, and no expensive setup.</h2>
+          <p>We focus on software students can actually access, so the club stays practical and open to everyone.</p>
+        </div>
+
+        <div class="resource-layout">
+          <div id="tools-grid" class="resource-grid"></div>
+          <aside class="resource-note reveal-item">
+            <h3>Good to know</h3>
+            <ul class="check-list">
+              <li>You do not need to be an expert to start</li>
+              <li>Many activities work on school laptops or BYOD</li>
+              <li>We keep the workflow simple and collaborative</li>
+              <li>Sessions are shaped around curiosity, not pressure</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-reveal">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions students usually ask before they join.</h2>
+          <p>Tap a question to open it. This section is built to remove the usual doubts that stop people from signing up.</p>
+        </div>
+        <div id="faq-list" class="faq-list"></div>
+      </div>
+    </section>
+
+    <section id="join" class="section section--cta section-reveal">
+      <div class="container cta-panel">
+        <div>
+          <p class="eyebrow">Ready to join?</p>
+          <h2>If you want a club that feels creative, useful, and future-facing, this is your sign.</h2>
+          <p>
+            Come for the AI. Stay for the people, the builds, and the chance to create something impressive before everyone else catches up.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <button class="button button--primary" type="button" data-auth-open="signup">I want to join</button>
+          <a class="button button--secondary" href="#home">Back to top</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>AI Centre • Vidyashilp Academy • Build, create, and lead</p>
+      <p id="footer-year"></p>
+    </div>
+  </footer>
+
+  <!-- Auth modal -->
+  <div class="auth-modal" id="auth-modal" hidden>
+    <div class="auth-modal__backdrop" data-auth-close></div>
+    <div class="auth-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <button class="auth-modal__close" type="button" data-auth-close aria-label="Close">&times;</button>
+
+      <div class="auth-tabs" role="tablist" aria-label="Account">
+        <button class="auth-tab is-active" type="button" data-auth-tab="login" role="tab" aria-selected="true">Log in</button>
+        <button class="auth-tab" type="button" data-auth-tab="signup" role="tab" aria-selected="false">Sign up</button>
+      </div>
+
+      <h2 class="auth-modal__title" id="auth-modal-title">Welcome back</h2>
+      <p class="auth-message" id="auth-message" role="alert" hidden></p>
+
+      <!-- Login form -->
+      <form class="auth-form" id="login-form" novalidate>
+        <label class="auth-field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="auth-field">
+          <span>Password</span>
+          <input type="password" name="password" autocomplete="current-password" required />
+        </label>
+        <button class="button button--primary auth-submit" type="submit">Log in</button>
+      </form>
+
+      <!-- Signup form -->
+      <form class="auth-form" id="signup-form" hidden novalidate>
+        <label class="auth-field">
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="auth-field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="auth-field">
+          <span>Password</span>
+          <input type="password" name="password" autocomplete="new-password" required />
+        </label>
+        <button class="button button--primary auth-submit" type="submit">Create account</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
