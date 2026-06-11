@@ -1,0 +1,12 @@
+{
+  "name": "ai-centre",
+  "version": "1.0.0",
+  "description": "AI Centre at Vidyashilp Academy - landing page with auth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

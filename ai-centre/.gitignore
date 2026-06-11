@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Runtime data (contains live session tokens + plaintext passwords — never commit)
+users.json
+sessions.json
+events.json
+announcements.json
+attendance.json
+messages.json
+
+# OS / editor
+.DS_Store
+*.log

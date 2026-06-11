@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Centre ERP dashboard for members and admins." />
+  <title>Dashboard | AI Centre</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="erp">
+  <!-- Loading / auth gate -->
+  <div class="erp-gate" id="erp-gate">
+    <p>Loading dashboard…</p>
+  </div>
+
+  <div class="erp-shell" id="erp-shell" hidden>
+    <!-- Sidebar -->
+    <aside class="erp-sidebar" id="erp-sidebar">
+      <a class="brand" href="index.html" aria-label="AI Centre home">
+        <span class="brand-mark" aria-hidden="true">AI</span>
+        <span class="brand-text">
+          <strong>AI Centre</strong>
+          <span>ERP</span>
+        </span>
+      </a>
+
+      <nav class="erp-nav" aria-label="Dashboard sections">
+        <button class="erp-nav__item is-active" type="button" data-view="overview">📊 Overview</button>
+        <button class="erp-nav__item" type="button" data-view="announcements">📣 Announcements</button>
+        <button class="erp-nav__item" type="button" data-view="events">📅 Events &amp; Sessions</button>
+        <button class="erp-nav__item" type="button" data-view="attendance" data-admin>✅ Attendance</button>
+        <button class="erp-nav__item" type="button" data-view="members" data-admin>👥 Members</button>
+        <button class="erp-nav__item" type="button" data-view="messages">✉️ Messages</button>
+      </nav>
+
+      <div class="erp-sidebar__foot">
+        <a class="button button--secondary button--sm" href="index.html">← Back to site</a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="erp-main">
+      <header class="erp-topbar">
+        <button class="erp-menu-btn" type="button" id="erp-menu-btn" aria-label="Toggle menu">☰</button>
+        <h1 class="erp-title" id="erp-title">Overview</h1>
+        <div class="erp-user">
+          <span class="erp-user__name" id="erp-user-name">—</span>
+          <span class="erp-badge" id="erp-user-role">member</span>
+          <button class="button button--ghost button--sm" type="button" id="erp-logout">Log out</button>
+        </div>
+      </header>
+
+      <main class="erp-content" id="erp-content"></main>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
