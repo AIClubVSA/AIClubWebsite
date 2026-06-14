@@ -6,6 +6,10 @@
 
 .erp-shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
 
+/* The attribute selector outranks the plain class rules above so toggling
+   the `hidden` attribute (gate ↔ shell) actually hides the element. */
+.erp-gate[hidden], .erp-shell[hidden] { display: none; }
+
 /* ---------- Sidebar ---------- */
 .erp-sidebar {
   background: var(--bg-alt); border-right: 1px solid var(--border);
