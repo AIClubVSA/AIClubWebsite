@@ -215,9 +215,26 @@ function animateCounter(node) {
 
 let revealObserver;
 
+// Stagger reveal-items relative to their siblings for a cascading entrance.
+function applyStagger(items) {
+  const seen = new Map();
+  items.forEach((n) => {
+    const p = n.parentElement;
+    const i = seen.get(p) || 0;
+    seen.set(p, i + 1);
+    n.style.setProperty("--reveal-delay", (i * 0.07).toFixed(2) + "s");
+  });
+}
+
 function initReveal() {
+  // Promote section headings so every section animates in on scroll.
+  $$(".section-heading").forEach((n) => n.classList.add("reveal-item"));
+
+  const items = $$(".reveal-item");
+  applyStagger(items);
+
   if (!("IntersectionObserver" in window)) {
-    $$(".reveal-item").forEach((n) => n.classList.add("is-visible"));
+    items.forEach((n) => n.classList.add("is-visible"));
     $$(".counter").forEach(animateCounter);
     return;
   }
@@ -231,10 +248,10 @@ function initReveal() {
         revealObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
   );
 
-  $$(".reveal-item").forEach((n) => revealObserver.observe(n));
+  items.forEach((n) => revealObserver.observe(n));
   // Counters live in the hero (above the fold), so animate them right away
   // rather than waiting on an intersection that may never be reported.
   $$(".counter").forEach(animateCounter);
@@ -242,10 +259,56 @@ function initReveal() {
 
 // Observe items added after initial reveal setup (e.g. switched path cards)
 function revealNow(root) {
-  $$(".reveal-item", root).forEach((n) => {
+  const items = $$(".reveal-item", root);
+  applyStagger(items);
+  items.forEach((n) => {
     if (revealObserver) revealObserver.observe(n);
     else n.classList.add("is-visible");
   });
+}
+
+/* ---------- Scroll progress bar ---------- */
+function initScrollProgress() {
+  const bar = document.getElementById("scroll-progress");
+  if (!bar) return;
+  let ticking = false;
+  const update = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    const pct = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    bar.style.width = (pct * 100).toFixed(2) + "%";
+    ticking = false;
+  };
+  addEventListener("scroll", () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  addEventListener("resize", update, { passive: true });
+  update();
+}
+
+/* ---------- Hero parallax (skipped when motion is reduced) ---------- */
+function initParallax() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const layers = [
+    [document.querySelector(".hero-orb--one"), 0.28],
+    [document.querySelector(".hero-orb--two"), -0.2],
+    [document.querySelector(".hero-copy"), 0.08],
+    [document.querySelector(".hero-panel"), 0.18],
+  ].filter(([node]) => node);
+  if (!layers.length) return;
+
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY;
+    if (y < 900) {
+      for (const [node, rate] of layers) node.style.translate = `0 ${(y * rate).toFixed(1)}px`;
+    }
+    ticking = false;
+  };
+  addEventListener("scroll", () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
 }
 
 /* =========================================================
@@ -452,6 +515,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initPathSwitcher();
   initMenu();
   initReveal();
+  initScrollProgress();
+  initParallax();
 
   modal.init();
   Auth.restore();
