@@ -426,19 +426,34 @@ const VIEWS = {
         } else toast(r.message || "Failed", "error");
       });
     }
-    $$(".reply-form", root).forEach((f) =>
+    $$(".reply-form", root).forEach((f) => {
+      const btn = f.querySelector("button[type=submit]");
       f.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const r = await api("/api/messages/reply", {
-          method: "POST",
-          body: { id: f.dataset.id, reply: f.reply.value.trim() },
-        });
-        if (r.success) {
-          toast("Reply sent");
-          render("messages");
-        } else toast(r.message || "Failed", "error");
-      })
-    );
+        const reply = f.querySelector("textarea").value.trim();
+        if (!reply) {
+          toast("Write a reply first", "error");
+          return;
+        }
+        btn.disabled = true;
+        try {
+          const r = await api("/api/messages/reply", {
+            method: "POST",
+            body: { id: f.dataset.id, reply },
+          });
+          if (r.success) {
+            toast("Reply sent");
+            render("messages");
+          } else {
+            toast(r.message || "Failed", "error");
+            btn.disabled = false;
+          }
+        } catch (err) {
+          if (err.message !== "Not authenticated") toast("Couldn't reach the server", "error");
+          btn.disabled = false;
+        }
+      });
+    });
   },
 };
 

@@ -235,8 +235,9 @@ function initReveal() {
   );
 
   $$(".reveal-item").forEach((n) => revealObserver.observe(n));
-  // Counters live inside the hero copy, not a .reveal-item, so observe them directly
-  $$(".counter").forEach((c) => revealObserver.observe(c));
+  // Counters live in the hero (above the fold), so animate them right away
+  // rather than waiting on an intersection that may never be reported.
+  $$(".counter").forEach(animateCounter);
 }
 
 // Observe items added after initial reveal setup (e.g. switched path cards)
